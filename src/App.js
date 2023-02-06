@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import { Message } from "./pages/Message";
+import { Buttons } from "./pages/Buttons";
 
 function App() {
   return (
     <div>
-      <h1>Hello world!</h1>
+      <Message />
+      <Buttons />
     </div>
   );
 }
