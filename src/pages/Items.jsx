@@ -7,13 +7,14 @@ export const Items = () => {
         <div>
             {
                 items.map(
-                    ({img, title, description}) => 
+                    (props) => 
                     <Item
-                        img={img}
-                        title={title}
-                        description={description}
+                        key={props.id}
+                        img={props.img}
+                        title={props.title}
+                        description={props.description}
                     />
-)
+                )
             }
         </div>
     );

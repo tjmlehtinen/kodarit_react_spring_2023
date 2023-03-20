@@ -1,7 +1,7 @@
 export const items = [
     {   
         img: 'https://cdn.pixabay.com/photo/2021/09/26/20/49/world-6658881_960_720.jpg',
-        title: 'Item 1',        
+        title: 'Muutin tätä täällä',        
         description: 'Description here',
         id: 0,        
     },
