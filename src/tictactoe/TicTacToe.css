@@ -39,11 +39,6 @@
     font-size: 60px;
   }
   
-  .b-bottom-r {
-    border-right: 7px solid black;
-    border-bottom: 7px solid black;
-  }
-  
   .b-bottom {
     border-bottom: 7px solid black;
   }

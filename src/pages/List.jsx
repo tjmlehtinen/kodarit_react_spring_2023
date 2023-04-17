@@ -6,6 +6,11 @@ export const List = () => {
     const [inputValue, setInputValue] = useState("");
     const [itemId, setItemId] = useState(0);
 
+    function removeItem(id) {
+        const newContent = content.filter(item => item.id !== id);
+        setContent(newContent);
+    }
+
     return (
         <div>
             <form
@@ -32,6 +37,15 @@ export const List = () => {
                     value="Add this!"
                 />
             </form>
+            <button
+                type="button"
+                onClick={() => {
+                    setContent([])
+                    setInputValue("")
+                }}
+            >
+                Clear
+            </button>
             <ul>
                 {
                     content.map((item) =>
@@ -39,6 +53,7 @@ export const List = () => {
                             {item.data}
                             <button
                                 type="button"
+                                onClick={() => removeItem(item.id)}
                             >
                                 Remove
                             </button>
