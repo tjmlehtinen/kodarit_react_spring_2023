@@ -17,9 +17,18 @@ export const TicTacToe = () => {
         if (winner) {
             setStatus(`Winner: ${winner}`);
         }
+        else if (!gameState.includes("")) {
+            setStatus("It's a draw!");
+        }
+        else {
+            setStatus(`It's ${isXTurn ? "X" : "O"}'s turn`);
+        }
     }, [gameState]);
 
     function onSquareClick(index) {
+        if (status.includes("Winner")) {
+            return;
+        }
         if (gameState[index] !== "") {
             return;
         }
@@ -56,7 +65,30 @@ export const TicTacToe = () => {
                 gameState={gameState}
                 onSquareClick={onSquareClick}
             />
-            {status}
+            {(!status.includes("Winner")) && (
+            <>
+                <span>{status}</span>
+                <button
+                    onClick={() => {
+                        setGameState(initialBoard);
+                        setIsXTurn(true);
+                    }}
+                >
+                    Clear board
+                </button>
+            </>)}
+            {(status.includes("Winner")) && (
+            <>
+                <span style={{color: "green"}}>{status}</span>
+                <button
+                    onClick={() => {
+                        setGameState(initialBoard);
+                        setIsXTurn(true);
+                    }}
+                >
+                    Clear board
+                </button>
+            </>)}
         </div>
     );
 }
