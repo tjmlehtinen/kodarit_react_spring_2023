@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 import { Board } from "./Board";
+import { ScoreBoard } from "./ScoreBoard";
 
 import "./TicTacToe.css";
 
@@ -10,7 +11,8 @@ const initialBoard = ["", "", "", "", "", "", "", "", ""];
 export const TicTacToe = () => {
     const [gameState, setGameState] = useState(initialBoard);
     const [isXTurn, setIsXTurn] = useState(true);
-    const [status, setStatus] = useState("iuyouy");
+    const [status, setStatus] = useState("");
+    const [scores, setScores] = useState({xScore: 0, oScore: 0});
 
     useEffect(() => {
         const winner = checkWinner();
@@ -38,6 +40,11 @@ export const TicTacToe = () => {
         setIsXTurn(!isXTurn);
     }
 
+    const clearBoard = () => {
+        setGameState(initialBoard);
+        setIsXTurn(true);
+    }
+
     function checkWinner() {
         const lines = [
             [0, 1, 2],
@@ -61,6 +68,7 @@ export const TicTacToe = () => {
     return (
         <div className="game">
             <h1>Tic-Tac-Toe</h1>
+            <ScoreBoard />
             <Board
                 gameState={gameState}
                 onSquareClick={onSquareClick}
@@ -69,10 +77,8 @@ export const TicTacToe = () => {
             <>
                 <span>{status}</span>
                 <button
-                    onClick={() => {
-                        setGameState(initialBoard);
-                        setIsXTurn(true);
-                    }}
+                    style={{background: "yellow"}}
+                    onClick={clearBoard}
                 >
                     Clear board
                 </button>
@@ -81,10 +87,8 @@ export const TicTacToe = () => {
             <>
                 <span style={{color: "green"}}>{status}</span>
                 <button
-                    onClick={() => {
-                        setGameState(initialBoard);
-                        setIsXTurn(true);
-                    }}
+                    style={{background: "lightgreen"}}
+                    onClick={clearBoard}
                 >
                     Clear board
                 </button>
