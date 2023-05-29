@@ -27,6 +27,16 @@ export const TicTacToe = () => {
         }
     }, [gameState]);
 
+    useEffect(() => {
+        const winner = checkWinner();
+        if (winner === "X") {
+            setScores({xScore: scores.xScore + 1, oScore: scores.oScore});
+        }
+        if (winner === "O") {
+            setScores({xScore: scores.xScore, oScore: scores.oScore + 1});
+        }
+    }, [status])
+
     function onSquareClick(index) {
         if (status.includes("Winner")) {
             return;
@@ -68,7 +78,17 @@ export const TicTacToe = () => {
     return (
         <div className="game">
             <h1>Tic-Tac-Toe</h1>
-            <ScoreBoard />
+            <ScoreBoard
+                scores={scores}
+            />
+            <button
+                type="button"
+                onClick={() => {
+                    setScores({xScore: 0, oScore: 0});
+                }}
+            >
+                Clear scores
+            </button>
             <Board
                 gameState={gameState}
                 onSquareClick={onSquareClick}

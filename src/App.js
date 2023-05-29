@@ -9,6 +9,8 @@ import { Items } from "./pages/Items";
 import { List } from "./pages/List";
 import { TicTacToe } from "./tictactoe/TicTacToe";
 
+import "./App.css";
+
 function App() {
   return (
     <BrowserRouter>

@@ -1,10 +1,10 @@
 import React from "react";
 
-export const ScoreBoard = () => {
+export const ScoreBoard = ({scores}) => {
     return (
         <div class="scoreboard">
-            <span>X: 0</span>
-            <span>O: 0</span>
+            <span>X: {scores.xScore}</span>
+            <span>O: {scores.oScore}</span>
         </div>
     );
 }
